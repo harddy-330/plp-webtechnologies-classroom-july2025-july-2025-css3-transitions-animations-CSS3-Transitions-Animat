@@ -1,0 +1,107 @@
+/* --- Part 1: CSS3 Transitions & Animations --- */
+
+/* Button hover effect */
+.animated-btn {
+  background: #4caf50;
+  color: white;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.animated-btn:hover {
+  background: #388e3c;
+  transform: scale(1.1) rotate(-2deg);
+}
+
+/* Fade in/out box */
+.fade-box {
+  opacity: 0.5;
+  transition: opacity 1s;
+  background: #2196f3;
+  color: white;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 8px;
+}
+.fade-box:hover {
+  opacity: 1;
+}
+
+/* Continuous slide animation */
+.slide-box {
+  width: 120px;
+  height: 40px;
+  background: #ff9800;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  animation: slide 2s linear infinite alternate;
+}
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(60px); }
+}
+
+/* --- Part 3: JS-triggered Animations & Modal --- */
+.box {
+  width: 80px;
+  height: 80px;
+  background: #e91e63;
+  margin: 1em 0;
+  border-radius: 12px;
+  transition: box-shadow 0.3s;
+}
+.box.animated {
+  animation: box-bounce 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes box-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.2) rotate(10deg); }
+  60% { transform: scale(0.9) rotate(-10deg); }
+  100% { transform: scale(1); }
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s;
+}
+.modal.show {
+  display: flex;
+  animation: fadeIn 0.4s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.modal-content {
+  background: #fff;
+  padding: 2em 2.5em;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  animation: slideUp 0.5s;
+}
+@keyframes slideUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.close {
+  position: absolute;
+  right: 1.5em;
+  top: 1.2em;
+  font-size: 2em;
+  color: #e91e63;
+  cursor: pointer;
+}
